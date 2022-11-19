@@ -1,9 +1,10 @@
 {
-  "endOfLine": "lf",
-  "quoteProps": "consistent",
-  "semi": false,
-  "singleAttributePerLine": true,
-  "singleQuote": false,
-  "trailingComma": "all",
-  "tabWidth": 2
+	"endOfLine": "lf",
+	"quoteProps": "consistent",
+	"semi": false,
+	"singleAttributePerLine": true,
+	"singleQuote": false,
+	"trailingComma": "all",
+	"useTabs": true,
+	"tabWidth": 2
 }
