@@ -1,0 +1,10 @@
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$main-color: $green-400;
+$secondary-color: $gray-500;
+
+$character-alive: $green-500;
+$character-dead: $red-500;
+$character-unkown: $indigo-500;

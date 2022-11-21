@@ -1,0 +1,55 @@
+@use "../../../styles/abstracts/variables";
+
+@import "/node_modules/bootstrap/scss/mixins";
+@import "/node_modules/bootstrap/scss/functions";
+@import "/node_modules/bootstrap/scss/variables";
+
+// .CharactersList {
+//   // display: flex;
+//   // flex-wrap: wrap;
+//   // align-items: stretch;
+//   // justify-content: center;
+//   // gap: variables.$list-gap;
+
+//   column-count: 2;
+//   column-gap: 8px;
+
+//   @include media-breakpoint-up(sm) {
+//     column-count: 2;
+//   }
+
+//   @include media-breakpoint-up(md) {
+//     column-count: 3;
+//   }
+
+//   @include media-breakpoint-up(lg) {
+//     column-count: 3;
+//   }
+
+//   @include media-breakpoint-up(xl) {
+//     column-count: 4;
+//   }
+//   @include media-breakpoint-up(xxl) {
+//     column-count: 5;
+//   }
+// }
+
+.myMasonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  gap: 8px;
+  // margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.myMasonryGridColumn {
+  // padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.myMasonryGridColumn > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,68 @@
+@use "../../../styles" as *;
+
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+.card {
+  overflow: hidden;
+
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+
+  :global(.card-body) {
+    background-color: $main-color;
+  }
+
+  & img {
+    min-height: 150px;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  p {
+    font-size: toRem(14);
+  }
+
+  .cardTitle {
+    color: white;
+  }
+
+  .alive,
+  .dead,
+  .unknown {
+    font-weight: 700;
+  }
+
+  .alive {
+    color: $character-alive;
+  }
+
+  .dead {
+    color: $character-dead;
+  }
+
+  .unknown {
+    color: $character-unkown;
+  }
+  // width: columnWidthCalc(2, $list-gap);
+
+  // @include media-breakpoint-up(sm) {
+  //   width: columnWidthCalc(2, $list-gap);
+  // }
+
+  // @include media-breakpoint-up(md) {
+  //   width: columnWidthCalc(3, $list-gap);
+  // }
+
+  // @include media-breakpoint-up(lg) {
+  //   width: columnWidthCalc(4, $list-gap);
+  // }
+
+  // @include media-breakpoint-up(xl) {
+  //   width: columnWidthCalc(4, $list-gap);
+  // }
+  // @include media-breakpoint-up(xxl) {
+  //   width: columnWidthCalc(5, $list-gap);
+  // }
+}

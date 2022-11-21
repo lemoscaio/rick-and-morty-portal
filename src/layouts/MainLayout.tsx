@@ -7,7 +7,7 @@ export default function MainLayout() {
 	return (
 		<>
 			<Header />
-			<Container className="w-100 m-0 px-3 py-3">
+			<Container className="py-3">
 				<Outlet />
 			</Container>
 		</>
