@@ -1,9 +1,13 @@
-import Masonry from "react-masonry-css"
-import characters from "../../../mocks/characters.json"
+import { useCallback, useEffect, useState } from "react"
 
+import Masonry from "react-masonry-css"
 import styles from "./CharactersList.module.scss"
 
 import CharacterCard from "../CharacterCard"
+import { Characters } from "../../../interfaces/Characters"
+import { api } from "../../../services/api"
+import axios from "axios"
+import { useInView } from "react-intersection-observer"
 
 const masonryBreakpointColumnsObj = {
 	default: 5,
@@ -14,23 +18,78 @@ const masonryBreakpointColumnsObj = {
 	576: 2,
 }
 
+interface ApiResult {
+	info: ApiInfo
+	results: Characters
+}
+
+interface ApiInfo {
+	count: number
+	pages: number
+	next: string | null
+	prev: string | null
+}
+
 export default function CharactersList() {
+	const [characters, setCharacters] = useState<Characters>([])
+	const [apiInfo, setApiInfo] = useState<ApiInfo>({
+		count: 0,
+		pages: 0,
+		next: null,
+		prev: null,
+	})
+
+	const { ref } = useInView({
+		onChange: (inView) => {
+			console.log("achei")
+			if (inView) fetchCharacters()
+		},
+		threshold: 0,
+		rootMargin: "50px",
+	})
+
+	useEffect(() => {
+		const controller = new AbortController()
+
+		try {
+			fetchCharacters()
+		} catch (error) {
+			if (controller.signal.aborted) return
+			console.log(error)
+		}
+
+		return () => controller.abort()
+	}, [])
+
+	const fetchCharacters = useCallback(async () => {
+		if (apiInfo?.next && apiInfo?.next?.length > 0) {
+			const { data } = await axios.get<ApiResult>(apiInfo.next)
+
+			setApiInfo(data.info)
+			setCharacters((prev) => prev.concat(data.results))
+		} else {
+			const { data } = await api.get<ApiResult>("/character")
+
+			setApiInfo(data.info)
+			setCharacters(data.results)
+		}
+	}, [characters, apiInfo])
+
 	return (
 		<>
-			{/* <Container className={`mt-3 p-0 ${styles.CharactersList}`}> */}
 			<Masonry
 				breakpointCols={masonryBreakpointColumnsObj}
 				className={`${styles.myMasonryGrid} mt-3`}
 				columnClassName={styles.myMasonryGridColumn}
 			>
-				{characters.results.map((character) => (
+				{characters.map((character, index) => (
 					<CharacterCard
 						character={character}
 						key={character.id}
+						ref={characters.length - 5 === index ? ref : null}
 					></CharacterCard>
 				))}
 			</Masonry>
-			{/* </Container> */}
 		</>
 	)
 }

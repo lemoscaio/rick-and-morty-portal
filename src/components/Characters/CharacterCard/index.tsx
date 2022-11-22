@@ -1,44 +1,16 @@
-import firstEpisode from "../../../mocks/episode.json"
-
-import { IoIosFemale, IoIosMale } from "react-icons/io"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 
 import { Card } from "react-bootstrap"
+import { IoIosFemale, IoIosMale } from "react-icons/io"
+
+import { Character } from "../../../interfaces/Character"
+import { Episode } from "../../../interfaces/Episode"
 
 import styles from "./CharacterCard.module.scss"
 
-interface Character {
-	id: number
-	name: string
-	status: string
-	species: string
-	type: string
-	gender: string
-	origin: {
-		name: string
-		url: string
-	}
-	location: {
-		name: string
-		url: string
-	}
-	image: string
-	episode: string[]
-	url: string
-	created: string
-}
-
 interface CharacterProps {
 	character: Character
-}
-
-interface Episode {
-	id: number
-	name: string
-	air_date: string
-	episode: string
-	characters: [string, string]
-	url: string
-	created: string
 }
 
 const genders = {
@@ -53,7 +25,22 @@ const status = {
 	unknown: "unknown",
 }
 
-export default function CharacterCard({ character }: CharacterProps) {
+const CharacterCard = React.forwardRef(function CharacterCard(
+	{ character }: CharacterProps,
+	ref: React.LegacyRef<HTMLDivElement> | undefined,
+) {
+	const [firstEpisode, setFirstEpisode] = useState<Episode>()
+
+	useEffect(() => {
+		async function fetchFirstEpisode() {
+			const { data } = await axios.get<Episode>(character.episode[0])
+
+			setFirstEpisode(data)
+		}
+
+		fetchFirstEpisode()
+	}, [])
+
 	return (
 		<Card
 			className={`${styles.card} border-1 rounded-4 mb-2 bg-transparent text-break shadow-sm`}
@@ -63,7 +50,12 @@ export default function CharacterCard({ character }: CharacterProps) {
 				<Card.Title
 					className={`${styles.cardTitle} pb-1 d-flex align-items-flex-start justify-content-space-between `}
 				>
-					<div className="p-0 me-2 w-100 flex-fill fs-6">{character.name}</div>
+					<div
+						className="p-0 me-2 w-100 flex-fill fs-6"
+						ref={ref}
+					>
+						{character.id} {character.name}
+					</div>
 					<div className="lh-1">{genders[character.gender]}</div>
 				</Card.Title>
 				<Card.Subtitle className="mb-2">
@@ -97,4 +89,6 @@ export default function CharacterCard({ character }: CharacterProps) {
 			</Card.Footer>
 		</Card>
 	)
-}
+})
+
+export default CharacterCard
