@@ -10,6 +10,14 @@
   page-break-inside: avoid;
   break-inside: avoid;
 
+  cursor: pointer;
+
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
   :global(.card-body) {
     background-color: $main-color;
   }
@@ -20,7 +28,8 @@
     object-fit: cover;
   }
 
-  p {
+  p,
+  span {
     font-size: toRem(14);
   }
 

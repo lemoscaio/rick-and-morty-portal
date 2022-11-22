@@ -1,8 +1,8 @@
 import firstEpisode from "../../../mocks/episode.json"
 
-import { IoIosMale, IoIosFemale } from "react-icons/io"
+import { IoIosFemale, IoIosMale } from "react-icons/io"
 
-import { Card, Container, Stack } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 import styles from "./CharacterCard.module.scss"
 
@@ -50,7 +50,7 @@ const genders = {
 const status = {
 	Alive: "alive",
 	Dead: "dead",
-	unkown: "unkown",
+	unknown: "unknown",
 }
 
 export default function CharacterCard({ character }: CharacterProps) {
@@ -58,10 +58,7 @@ export default function CharacterCard({ character }: CharacterProps) {
 		<Card
 			className={`${styles.card} border-1 rounded-4 mb-2 bg-transparent text-break shadow-sm`}
 		>
-			<Card.Img
-				src={character.image}
-				// variant="top"
-			/>
+			<Card.Img src={character.image} />
 			<Card.Body className={styles[".card-body"]}>
 				<Card.Title
 					className={`${styles.cardTitle} pb-1 d-flex align-items-flex-start justify-content-space-between `}
@@ -73,12 +70,12 @@ export default function CharacterCard({ character }: CharacterProps) {
 					<Card.Text className="mb-0 fw-bold">{character.species}</Card.Text>
 					<Card.Text className="mb-1 fst-italic">{character.type}</Card.Text>
 				</Card.Subtitle>
-				{/* {character.origin.url.length > 0 ? (
+				{character.origin.url.length > 0 ? (
 					<>
 						<Card.Text className="mb-0 fw-bold">Origin:</Card.Text>
 						<Card.Text className="mb-1">{character.origin.name}</Card.Text>
 					</>
-				) : null} */}
+				) : null}
 				{character.location.url.length > 0 ? (
 					<>
 						<Card.Text className="mb-0 fw-bold">Last known location:</Card.Text>
@@ -92,10 +89,10 @@ export default function CharacterCard({ character }: CharacterProps) {
 					</>
 				) : null}
 			</Card.Body>
-			<Card.Footer className="justify-content-between text-center">
-				<span className="fw-bold">Status: </span>
+			<Card.Footer className="justify-content-between text-center bg-light">
+				<span className="fw-bold">STATUS: </span>
 				<span className={styles[status[character.status]]}>
-					{character.status}
+					{character.status.toUpperCase()}
 				</span>
 			</Card.Footer>
 		</Card>
