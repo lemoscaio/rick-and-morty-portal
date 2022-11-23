@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 
 import { Card } from "react-bootstrap"
 import { IoIosFemale, IoIosMale } from "react-icons/io"
+import { useNavigate } from "react-router-dom"
 
 import { Character } from "../../../interfaces/Character"
 import { Episode } from "../../../interfaces/Episode"
@@ -31,6 +32,8 @@ const CharacterCard = React.forwardRef(function CharacterCard(
 ) {
 	const [firstEpisode, setFirstEpisode] = useState<Episode>()
 
+	const navigate = useNavigate()
+
 	useEffect(() => {
 		async function fetchFirstEpisode() {
 			const { data } = await axios.get<Episode>(character.episode[0])
@@ -41,20 +44,28 @@ const CharacterCard = React.forwardRef(function CharacterCard(
 		fetchFirstEpisode()
 	}, [])
 
+	function onCardClick() {
+		navigate(`/characters/${character.id}`)
+	}
+
 	return (
 		<Card
 			className={`${styles.card} border-1 rounded-4 mb-2 bg-transparent text-break shadow-sm`}
+			onClick={onCardClick}
 		>
-			<Card.Img src={character.image} />
+			<Card.Img
+				src={character.image}
+				variant="top"
+			/>
 			<Card.Body className={styles[".card-body"]}>
 				<Card.Title
-					className={`${styles.cardTitle} pb-1 d-flex align-items-flex-start justify-content-space-between `}
+					className={`${styles.cardTitle} pb-2 mb-0 d-flex align-items-flex-start justify-content-space-between `}
 				>
 					<div
 						className="p-0 me-2 w-100 flex-fill fs-6"
 						ref={ref}
 					>
-						{character.id} {character.name}
+						{character.name}
 					</div>
 					<div className="lh-1">{genders[character.gender]}</div>
 				</Card.Title>
@@ -81,7 +92,7 @@ const CharacterCard = React.forwardRef(function CharacterCard(
 					</>
 				) : null}
 			</Card.Body>
-			<Card.Footer className="justify-content-between text-center bg-light">
+			<Card.Footer className="justify-content-between text-center bg-light py-1">
 				<span className="fw-bold">STATUS: </span>
 				<span className={styles[status[character.status]]}>
 					{character.status.toUpperCase()}
