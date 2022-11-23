@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom"
 import CharactersList from "../../components/Characters/CharactersList"
 
 export default function CharactersPage() {
