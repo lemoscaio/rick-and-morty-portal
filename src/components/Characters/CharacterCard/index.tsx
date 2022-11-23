@@ -57,7 +57,7 @@ const CharacterCard = React.forwardRef(function CharacterCard(
 				src={character.image}
 				variant="top"
 			/>
-			<Card.Body className={styles[".card-body"]}>
+			<Card.Body className={`${styles[".card-body"]} px-2 pb-1 pt-2`}>
 				<Card.Title
 					className={`${styles.cardTitle} pb-2 mb-0 d-flex align-items-flex-start justify-content-space-between `}
 				>
