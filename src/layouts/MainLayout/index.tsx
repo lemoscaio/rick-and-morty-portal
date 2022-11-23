@@ -10,7 +10,7 @@ export default function MainLayout() {
 		<>
 			<Header />
 			<main className={styles.mainLayout}>
-				<Container className="py-3">
+				<Container className="py-3 flex-fill border-0">
 					<Outlet />
 				</Container>
 			</main>

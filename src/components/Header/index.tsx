@@ -13,7 +13,7 @@ export default function Header() {
 	const [selectedOption, setSelectedOption] = useState("characters")
 
 	function onMenuClick(menuOption: string | null) {
-		if (!menuOption || selectedOption === menuOption) return
+		if (!menuOption) return
 
 		setSelectedOption(menuOption)
 		return navigate(menuOption)
@@ -21,17 +21,17 @@ export default function Header() {
 
 	return (
 		<Navbar
-			className={`${styles.navbar} px-3 py-0 shadow`}
+			className={`${styles.navbar} px-3 pt-1 pb-0 shadow`}
 			expand="md"
 			sticky="top"
 			collapseOnSelect
 		>
 			<Container>
-				<Navbar.Brand className="me-2 text-light user-select-none">
+				<Navbar.Brand className="me-2 text-light fs-6 text-uppercase user-select-none">
 					<img
 						src={MortyIcon}
 						height="50"
-						className="me-3"
+						className="me-1"
 					/>
 					Rick and Morty
 				</Navbar.Brand>
@@ -46,7 +46,7 @@ export default function Header() {
 						justify
 						activeKey={selectedOption}
 						onSelect={(menuOption) => onMenuClick(menuOption)}
-						className="align-items-center"
+						className={`align-items-center ${styles.nav}`}
 					>
 						<Nav.Item
 							className="py-sm-2"

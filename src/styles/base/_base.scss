@@ -1,4 +1,14 @@
+@use "../abstracts/typography" as *;
+@use "../themes/theme" as *;
+
 * {
   box-sizing: border-box;
-  // font-family: ;
+}
+
+html {
+  background-color: $background-color;
+}
+
+body {
+  font-family: $font-main !important;
 }

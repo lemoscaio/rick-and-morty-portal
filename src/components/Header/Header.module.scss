@@ -2,4 +2,12 @@
 
 .navbar {
   background-color: $header-color;
+
+  .nav a {
+    transition: all 100ms ease-in-out;
+    &:hover {
+      color: black !important;
+      transform: scale(1.02);
+    }
+  }
 }

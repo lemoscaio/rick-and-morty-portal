@@ -1,12 +1,10 @@
-import { Outlet } from "react-router-dom"
 import CharactersList from "../../components/Characters/CharactersList"
+import PageTitle from "../../components/PageTitle"
 
 export default function CharactersPage() {
 	return (
 		<>
-			<div className="fs-2 text-body text-center border-bottom border-dark">
-				Characters
-			</div>
+			<PageTitle border>Characters</PageTitle>
 			<CharactersList />
 		</>
 	)

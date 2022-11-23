@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import MainLayout from "../layouts/MainLayout"
-import CharactersPage from "../pages/ChractersPage"
+import CharacterPage from "../pages/CharacterPage"
+import CharactersPage from "../pages/CharactersPage"
 import EpisodesPage from "../pages/EpisodesPage"
 import LocationsPage from "../pages/LocationsPage"
 
@@ -12,8 +13,12 @@ export default function AppRoutes() {
 				element={<MainLayout />}
 			>
 				<Route
-					path="/characters"
+					path="characters"
 					element={<CharactersPage />}
+				/>
+				<Route
+					path="characters/:characterId"
+					element={<CharacterPage />}
 				/>
 				<Route
 					path="/locations"

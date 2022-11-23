@@ -1,0 +1,11 @@
+@use "/src/styles/themes/theme" as *;
+
+.wrapper {
+  :global(.btn) {
+    background-color: $button-background-color;
+
+    &:hover {
+      background-color: $button-background-color-hover;
+    }
+  }
+}
