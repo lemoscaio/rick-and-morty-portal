@@ -1,0 +1,19 @@
+@use "/src/styles/themes/theme" as *;
+
+$button-background-color: $main-color-light;
+$button-background-color-hover: $main-color;
+$button-background-color-active: $main-color-dark;
+
+.wrapper {
+  :global(.btn) {
+    background-color: $button-background-color;
+
+    &:hover {
+      background-color: $button-background-color-hover;
+    }
+
+    &:active {
+      background-color: $button-background-color-active !important;
+    }
+  }
+}
