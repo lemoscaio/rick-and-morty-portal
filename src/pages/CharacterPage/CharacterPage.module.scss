@@ -1,11 +1,29 @@
-@use "/src/styles/themes/theme" as *;
+@use "/src/styles/index.scss" as *;
 
 .wrapper {
-  :global(.btn) {
-    background-color: $button-background-color;
+  .informationWrapper {
+    .basicInfo {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
 
-    &:hover {
-      background-color: $button-background-color-hover;
+      justify-content: center;
+
+      padding: 0 16px;
+
+      margin-bottom: 32px;
+
+      .info {
+        text-align: center;
+
+        .label {
+          font-size: toRem(14);
+          font-weight: 700;
+        }
+        .propValue {
+          font-size: toRem(16);
+        }
+      }
     }
   }
 }

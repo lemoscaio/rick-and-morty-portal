@@ -1,0 +1,25 @@
+@use "/src/styles/index.scss" as *;
+
+$episode-card-background-color: $main-color-light;
+$episode-card-background-color-hover: $main-color;
+
+.episodeCard {
+  background-color: $episode-card-background-color;
+  border-radius: 8px;
+
+  padding: 8px 16px;
+
+  cursor: pointer;
+
+  transition: all 100ms ease-in-out;
+
+  font-size: toRem(14);
+
+  .episodeNumber {
+    font-size: toRem(12);
+  }
+
+  &:hover {
+    background-color: $episode-card-background-color-hover;
+  }
+}
