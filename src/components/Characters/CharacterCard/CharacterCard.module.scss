@@ -3,6 +3,11 @@
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+
+:global(.card) {
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+}
+
 .card {
   overflow: hidden;
 
@@ -19,7 +24,7 @@
   }
 
   :global(.card-body) {
-    background-color: $main-color;
+    background-color: $card-background-color;
   }
 
   & img {
@@ -34,7 +39,8 @@
   }
 
   .cardTitle {
-    color: white;
+    color: $card-title-color;
+    font-weight: 700;
   }
 
   .alive,
