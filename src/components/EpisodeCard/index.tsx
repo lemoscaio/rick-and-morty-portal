@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 import { Episode } from "../../interfaces/Episode"
 
@@ -34,8 +35,10 @@ export default function EpisodeCard({ episodeUrl }: EpisodeCardProps) {
 	return (
 		<>
 			<article className={`${styles.episodeCard} shadow-sm`}>
-				<div className={styles.episodeNumber}>{episode?.episode}</div>
-				<span>{episode?.name}</span>
+				<Link to={`/episodes/${episode?.id}`}>
+					<div className={styles.episodeNumber}>{episode?.episode}</div>
+					<span>{episode?.name}</span>
+				</Link>
 			</article>
 		</>
 	)

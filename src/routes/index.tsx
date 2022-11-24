@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router-dom"
 import MainLayout from "../layouts/MainLayout"
 import CharacterPage from "../pages/CharacterPage"
 import CharactersPage from "../pages/CharactersPage"
+import EpisodePage from "../pages/EpisodePage.tsx"
 import EpisodesPage from "../pages/EpisodesPage"
+import LocationPage from "../pages/LocationPage"
 import LocationsPage from "../pages/LocationsPage"
 
 export default function AppRoutes() {
@@ -25,8 +27,16 @@ export default function AppRoutes() {
 					element={<LocationsPage />}
 				/>
 				<Route
+					path="/locations/:locationId"
+					element={<LocationPage />}
+				/>
+				<Route
 					path="/episodes"
 					element={<EpisodesPage />}
+				/>
+				<Route
+					path="/episodes/:episodeId"
+					element={<EpisodePage />}
 				/>
 			</Route>
 		</Routes>
