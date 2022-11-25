@@ -16,6 +16,10 @@ export default function AppRoutes() {
 				element={<MainLayout />}
 			>
 				<Route
+					index
+					element={<CharactersPage />}
+				/>
+				<Route
 					path="characters"
 					element={<CharactersPage />}
 				/>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { GiHamburgerMenu } from "react-icons/gi"
 
@@ -28,12 +28,14 @@ export default function Header() {
 		>
 			<Container>
 				<Navbar.Brand className="me-2 text-light fs-6 text-uppercase user-select-none">
-					<img
-						src={MortyIcon}
-						height="50"
-						className="me-1"
-					/>
-					Rick and Morty
+					<Link to="/">
+						<img
+							src={MortyIcon}
+							height="50"
+							className="me-1"
+						/>
+						Rick and Morty
+					</Link>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav">
 					<GiHamburgerMenu className="text-light" />
