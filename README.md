@@ -1,6 +1,8 @@
 # Rick and Morty Portal
 This project was part of an assessment to an employment selection process for Tenchi.
 
+Deploy URL: https://rick-and-morty-portal.vercel.app
+
 The goal was to create an SPA about Rick and Morty using React, Bootstrap and the [Rick and Morty API](https://rickandmortyapi.com/).
 
 ## Requirements done:
