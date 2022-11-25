@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-import { Episode } from "../../interfaces/Episode"
+import { Episode } from "../../../interfaces/Episode"
 
 import styles from "./EpisodeCard.module.scss"
 
@@ -10,7 +10,7 @@ interface EpisodeCardProps {
 	episodeUrl: string
 }
 
-export default function EpisodeCard({ episodeUrl }: EpisodeCardProps) {
+export default function EpisodeSmallCard({ episodeUrl }: EpisodeCardProps) {
 	const [episode, setEpisode] = useState<Episode>()
 
 	useEffect(() => {

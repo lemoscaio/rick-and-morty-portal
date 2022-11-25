@@ -11,7 +11,7 @@ import BackButton from "../../components/BackButton"
 import Board from "../../components/Board"
 import CharacterBasicInfo from "../../components/Characters/CharacterBasicInfo"
 import PageTitle from "../../components/PageTitle"
-import EpisodeCard from "../../components/EpisodeCard"
+import EpisodeCard from "../../components/Episodes/EpisodeSmallCard"
 
 export default function CharacterPage() {
 	const { characterId } = useParams()

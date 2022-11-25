@@ -2,21 +2,21 @@ import { useCallback, useEffect, useState } from "react"
 
 import { Container } from "react-bootstrap"
 import { ApiInfo, ApiResult } from "../../../interfaces/api"
-import { Location } from "../../../interfaces/Location"
-import { Locations } from "../../../interfaces/Locations"
 import { api } from "../../../services/api"
 
+import { Episode } from "../../../interfaces/Episode"
+import { Episodes } from "../../../interfaces/Episodes"
 import Pagination from "../../Pagination"
-import LocationCard from "../LocationCard"
-import styles from "./LocationsList.module.scss"
+import styles from "./EpisodesList.module.scss"
+import EpisodeCard from "../EpisodeCard"
 
-export interface ApiLocationsResult extends ApiResult {
-	results: Locations
+export interface ApiEpisodesResult extends ApiResult {
+	results: Episodes
 }
 
-export default function LocationsList() {
+export default function EpisodesList() {
 	const [page, setPage] = useState(1)
-	const [locations, setLocations] = useState<Location[]>([])
+	const [episodes, setEpisodes] = useState<Episodes>([])
 	const [apiInfo, setApiInfo] = useState<ApiInfo>({
 		count: 0,
 		pages: 0,
@@ -29,7 +29,7 @@ export default function LocationsList() {
 
 		try {
 			console.log("UseEffect")
-			fetchLocations(page)
+			fetchEpisodes(page)
 		} catch (error) {
 			if (controller.signal.aborted) return
 			console.log(error)
@@ -38,28 +38,27 @@ export default function LocationsList() {
 		return () => controller.abort()
 	}, [page])
 
-	const fetchLocations = useCallback(
+	const fetchEpisodes = useCallback(
 		async (currentPage: number) => {
-			console.log("Fetching")
-			const { data } = await api.get<ApiLocationsResult>(
-				`/location?page=${currentPage}`,
+			const { data } = await api.get<ApiEpisodesResult>(
+				`/episode?page=${currentPage}`,
 			)
 			console.log(data)
 			setApiInfo(data.info)
-			setLocations(data.results)
+			setEpisodes(data.results)
 		},
-		[locations, apiInfo],
+		[episodes, apiInfo],
 	)
 
 	return (
 		<>
-			<Container className={`mt-3 p-0 ${styles.LocationsList}`}>
-				{locations &&
-					locations.map((location: Location) => {
+			<Container className={`mt-3 p-0 ${styles.EpisodesList}`}>
+				{episodes &&
+					episodes.map((episode: Episode) => {
 						return (
-							<LocationCard
-								key={location.id}
-								location={location}
+							<EpisodeCard
+								key={episode.id}
+								episode={episode}
 							/>
 						)
 					})}

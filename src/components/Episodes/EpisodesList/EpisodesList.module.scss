@@ -1,0 +1,8 @@
+@use "/src/styles/index.scss" as *;
+
+.EpisodesList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: $list-gap;
+}
