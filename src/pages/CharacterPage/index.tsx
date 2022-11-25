@@ -11,6 +11,7 @@ import BackButton from "../../components/BackButton"
 import Board from "../../components/Board"
 import CharacterBasicInfo from "../../components/Characters/CharacterBasicInfo"
 import PageTitle from "../../components/PageTitle"
+import EpisodeCard from "../../components/EpisodeCard"
 
 export default function CharacterPage() {
 	const { characterId } = useParams()
@@ -52,7 +53,16 @@ export default function CharacterPage() {
 			>
 				<h4 className="text-center mb-1">Informations</h4>
 				{character && <CharacterBasicInfo character={character} />}
-				<Board episodes={character?.episode as string[]} />
+				<Board label="Episodes">
+					{character?.episode?.map((episodeUrl) => {
+						return (
+							<EpisodeCard
+								episodeUrl={episodeUrl}
+								key={episodeUrl}
+							/>
+						)
+					})}
+				</Board>
 			</div>
 		</div>
 	)

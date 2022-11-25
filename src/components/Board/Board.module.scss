@@ -12,8 +12,11 @@ $title-font-color: $black;
 .board {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   flex: 1;
+
+  width: 100%;
 
   background-color: $board-background-color;
 
@@ -36,7 +39,8 @@ $title-font-color: $black;
 
     gap: 8px;
 
-    max-height: 300px;
+    width: 100%;
+    max-height: 450px;
     overflow-y: auto;
 
     padding-right: 8px;
