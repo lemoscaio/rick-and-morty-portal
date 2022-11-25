@@ -4,6 +4,13 @@
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 
+$card-background-color: $light-font-color;
+$card-title-color: $dark-font-color;
+
+$character-alive: $green-400;
+$character-dead: $red-400;
+$character-unkown: $gray-500;
+
 :global(.card) {
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
 }

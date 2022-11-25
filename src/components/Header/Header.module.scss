@@ -1,5 +1,7 @@
 @use "/src/styles" as *;
 
+$header-color: $main-color-light;
+
 .navbar {
   background-color: $header-color;
 

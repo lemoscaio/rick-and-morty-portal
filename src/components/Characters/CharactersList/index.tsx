@@ -8,6 +8,7 @@ import { Characters } from "../../../interfaces/Characters"
 import { api } from "../../../services/api"
 import axios from "axios"
 import { useInView } from "react-intersection-observer"
+import { ApiInfo, ApiResult } from "../../../interfaces/api"
 
 const masonryBreakpointColumnsObj = {
 	default: 5,
@@ -18,16 +19,8 @@ const masonryBreakpointColumnsObj = {
 	576: 2,
 }
 
-interface ApiResult {
-	info: ApiInfo
+export interface ApiCharactersResult extends ApiResult {
 	results: Characters
-}
-
-interface ApiInfo {
-	count: number
-	pages: number
-	next: string | null
-	prev: string | null
 }
 
 export default function CharactersList() {
@@ -63,12 +56,12 @@ export default function CharactersList() {
 
 	const fetchCharacters = useCallback(async () => {
 		if (apiInfo?.next && apiInfo?.next?.length > 0) {
-			const { data } = await axios.get<ApiResult>(apiInfo.next)
+			const { data } = await axios.get<ApiCharactersResult>(apiInfo.next)
 
 			setApiInfo(data.info)
 			setCharacters((prev) => prev.concat(data.results))
 		} else {
-			const { data } = await api.get<ApiResult>("/character")
+			const { data } = await api.get<ApiCharactersResult>("/character")
 
 			setApiInfo(data.info)
 			setCharacters(data.results)

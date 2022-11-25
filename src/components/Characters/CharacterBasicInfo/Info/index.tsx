@@ -3,7 +3,16 @@ import { Character } from "../../../../interfaces/Character"
 import { Location } from "../../../../interfaces/Location"
 import styles from "../CharacterBasicInfo.module.scss"
 
-const infoToShow = ["status", "gender", "species", "origin", "location"]
+const infoToShow = ["status", "gender", "species", "type", "origin", "location"]
+
+const labels = {
+	status: "Status",
+	gender: "Gender",
+	species: "Species",
+	type: "Type",
+	origin: "Origin",
+	location: "Last seen in",
+}
 
 interface InfoProps {
 	character: Character
@@ -22,14 +31,19 @@ export default function Info({
 	location,
 	origin,
 }: InfoProps) {
+	function getLocationLink() {
+		if (infoName === "origin" && character[infoName].url)
+			return `/locations/${origin?.id}`
+		if (infoName === "location" && character[infoName].url)
+			return `/locations/${location?.id}`
+
+		return ""
+	}
+
 	if (infoToShow.includes(infoName)) {
 		const property = isOriginOrLocation(infoName) ? (
 			<Link
-				to={
-					infoName === "origin"
-						? `/locations/${origin?.id}`
-						: `/locations/${location?.id}`
-				}
+				to={getLocationLink()}
 				className={`${styles.propLinkValue}`}
 			>
 				{character[infoName].name}
@@ -38,18 +52,16 @@ export default function Info({
 			<span className={styles.propValue}>{character[infoName]}</span>
 		)
 
-		return (
+		return character[infoName] ? (
 			<div
 				key={infoName}
 				className={styles.info}
 			>
-				{
-					<span className={styles.label}>
-						{infoName[0].toUpperCase() + infoName.substring(1)}:
-					</span>
-				}
+				{<span className={styles.label}>{labels[infoName]}:</span>}
 				{property}
 			</div>
+		) : (
+			<></>
 		)
 	} else {
 		return <></>

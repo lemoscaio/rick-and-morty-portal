@@ -4,5 +4,5 @@
 }
 
 @function columnWidthCalc($columns: 1, $gap: 0px) {
-  @return calc(calc(100% - calc($gap * $columns)) / $columns);
+  @return calc(calc(100% - calc($gap * calc($columns - 1))) / $columns);
 }

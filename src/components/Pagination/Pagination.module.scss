@@ -1,0 +1,23 @@
+@use "/src/styles/index.scss" as *;
+
+$disabled-background-color: $secondary-color-light;
+$disabled-background-border-color: $secondary-color-light;
+
+$active-background-color: $main-color-light;
+$active-background-border-color: $main-color-light;
+
+.paginationWrapper {
+  :global(.disabled) {
+    & > span {
+      background-color: $disabled-background-color;
+      border: 1px solid $disabled-background-border-color;
+    }
+  }
+
+  :global(.active) {
+    & > span {
+      background-color: $active-background-color;
+      border: 1px solid $active-background-border-color;
+    }
+  }
+}

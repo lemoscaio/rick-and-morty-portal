@@ -1,0 +1,8 @@
+@use "/src/styles/index.scss" as *;
+
+.LocationsList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: $list-gap;
+}
