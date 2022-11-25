@@ -1,0 +1,40 @@
+@use "/src/styles/index.scss" as *;
+
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$page-background-color: lighten($main-color-lighter, 20);
+$title-font-color: $secondary-color-darker;
+$message-font-color: $secondary-color-darker;
+
+.notFoundPage {
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+
+  .title {
+    text-align: center;
+    color: $title-font-color;
+    font-weight: 700;
+  }
+
+  .message {
+    color: $message-font-color;
+    text-align: center;
+
+    margin: 16px 0 32px 0;
+  }
+
+  .image {
+    width: 100%;
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+    }
+  }
+}

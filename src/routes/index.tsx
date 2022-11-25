@@ -6,6 +6,7 @@ import EpisodePage from "../pages/EpisodePage.tsx"
 import EpisodesPage from "../pages/EpisodesPage"
 import LocationPage from "../pages/LocationPage"
 import LocationsPage from "../pages/LocationsPage"
+import NotFoundPage from "../pages/NotFoundPage"
 
 export default function AppRoutes() {
 	return (
@@ -38,7 +39,10 @@ export default function AppRoutes() {
 					path="/episodes/:episodeId"
 					element={<EpisodePage />}
 				/>
-				<Route path="*" element={NotFoundPage />}/>
+				<Route
+					path="*"
+					element={<NotFoundPage />}
+				/>
 			</Route>
 		</Routes>
 	)
