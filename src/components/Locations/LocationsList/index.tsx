@@ -28,7 +28,6 @@ export default function LocationsList() {
 		const controller = new AbortController()
 
 		try {
-			console.log("UseEffect")
 			fetchLocations(page)
 		} catch (error) {
 			if (controller.signal.aborted) return
@@ -40,11 +39,9 @@ export default function LocationsList() {
 
 	const fetchLocations = useCallback(
 		async (currentPage: number) => {
-			console.log("Fetching")
 			const { data } = await api.get<ApiLocationsResult>(
 				`/location?page=${currentPage}`,
 			)
-			console.log(data)
 			setApiInfo(data.info)
 			setLocations(data.results)
 		},

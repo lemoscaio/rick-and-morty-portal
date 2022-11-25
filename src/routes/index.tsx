@@ -38,6 +38,7 @@ export default function AppRoutes() {
 					path="/episodes/:episodeId"
 					element={<EpisodePage />}
 				/>
+				<Route path="*" element={NotFoundPage />}/>
 			</Route>
 		</Routes>
 	)

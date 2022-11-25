@@ -28,7 +28,6 @@ export default function EpisodesList() {
 		const controller = new AbortController()
 
 		try {
-			console.log("UseEffect")
 			fetchEpisodes(page)
 		} catch (error) {
 			if (controller.signal.aborted) return
@@ -43,7 +42,6 @@ export default function EpisodesList() {
 			const { data } = await api.get<ApiEpisodesResult>(
 				`/episode?page=${currentPage}`,
 			)
-			console.log(data)
 			setApiInfo(data.info)
 			setEpisodes(data.results)
 		},

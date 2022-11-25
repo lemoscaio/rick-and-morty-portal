@@ -34,7 +34,6 @@ export default function CharactersList() {
 
 	const { ref } = useInView({
 		onChange: (inView) => {
-			console.log("achei")
 			if (inView) fetchCharacters()
 		},
 		threshold: 0,

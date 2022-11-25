@@ -20,14 +20,12 @@ export default function CharacterBasicInfo({
 		async function fetchOrigin() {
 			if (character.origin.url) {
 				const { data } = await axios.get(character.origin.url)
-				console.log("origin", data)
 				setOrigin(data)
 			}
 		}
 		async function fetchLocation() {
 			if (character.location.url) {
 				const { data } = await axios.get(character.location.url)
-				console.log("location", data)
 				setLocation(data)
 			}
 		}
