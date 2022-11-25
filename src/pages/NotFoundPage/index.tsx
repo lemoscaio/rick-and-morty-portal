@@ -1,6 +1,5 @@
 import { Container } from "react-bootstrap"
 import BackButton from "../../components/BackButton"
-import PageTitle from "../../components/PageTitle"
 import notFoundImage from "/notfound.png"
 
 import styles from "./notFoundPage.module.scss"

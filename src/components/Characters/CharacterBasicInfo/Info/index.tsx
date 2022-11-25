@@ -36,6 +36,7 @@ export default function Info({
 			return `/locations/${origin?.id}`
 		if (infoName === "location" && character[infoName].url)
 			return `/locations/${location?.id}`
+		if (!character[infoName].url) return "/unknown-dimension"
 
 		return ""
 	}
