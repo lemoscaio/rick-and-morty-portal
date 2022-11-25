@@ -1,8 +1,73 @@
-@use "../../../styles/abstracts/variables";
+@use "/src/styles/index.scss" as *;
 
 @import "/node_modules/bootstrap/scss/mixins";
 @import "/node_modules/bootstrap/scss/functions";
 @import "/node_modules/bootstrap/scss/variables";
+
+$accordion-header-background-color: $main-color-light;
+
+$input-border-color: $main-color-lighter;
+$input-border-color-focus: $main-color-light;
+
+$button-background-color: $main-color-light;
+$button-background-color-hover: $main-color;
+$button-background-color-active: $main-color-dark;
+
+.filterContainer {
+  .accordionItem {
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+
+    .accordionHeader {
+      & button {
+        color: white;
+        background-color: $accordion-header-background-color;
+      }
+    }
+
+    .inputContainer {
+      display: flex;
+      align-items: center;
+
+      .filterInput {
+        flex-grow: 1;
+
+        background-color: white;
+        padding: 6px 12px;
+
+        border: 1px solid $input-border-color;
+        border-radius: 12px;
+
+        font-size: toRem(14);
+
+        &::placeholder {
+          font-size: toRem(14);
+        }
+
+        &:focus {
+          outline: none;
+          border: 1px solid $input-border-color-focus;
+        }
+      }
+    }
+
+    .button {
+      background-color: $button-background-color;
+      border: 1px solid $input-border-color;
+
+      &:global(.active) {
+        background-color: $button-background-color-active;
+      }
+
+      &:hover {
+        background-color: $button-background-color-hover;
+      }
+
+      &:active {
+        background-color: $button-background-color-active !important;
+      }
+    }
+  }
+}
 
 // .CharactersList {
 //   // display: flex;
@@ -38,7 +103,7 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  gap: variables.$list-gap;
+  gap: $list-gap;
   // margin-left: -30px; /* gutter size offset */
 
   width: auto;
